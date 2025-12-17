@@ -14,7 +14,7 @@ from django.contrib.auth.models import User
 @login_required(login_url='login')
 def dashboard(request):
     category_count = Category.objects.all().count()
-    blogs_count = Blog.objects().all().count()
+    blogs_count = Blog.objects.all().count()
 
     context = {
         'category_count':category_count,
@@ -148,3 +148,4 @@ def edit_user(request,pk):
 def delete_user(request,pk):
     user = get_object_or_404(User,pk=pk)
     user.delete()
+    return redirect('users')
